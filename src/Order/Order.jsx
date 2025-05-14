@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { gsap } from "gsap";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../Provider/AuthContext/AuthContext";
@@ -32,13 +31,7 @@ const Order = () => {
         );
         setOrders(filteredOrders);
 
-        gsap.from(".order-item", {
-          opacity: 70,
-          y: 50,
-          stagger: 0.2,
-          duration: 1,
-          ease: "power3.out",
-        });
+    
         // eslint-disable-next-line no-unused-vars
       } catch (err) {
         Swal.fire("Error", "Failed to fetch orders", "error");

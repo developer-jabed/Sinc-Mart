@@ -10,9 +10,51 @@ import Category from "../Category/Category";
 import Cart from "../Components/Cart/Cart";
 import Order from "../Order/Order";
 import AddProduct from "../AddProduct/AddProduct";
-
+import DashboardLayout from "../Dashboard/DashboardLayout/DashboardLayout";
+import ManageUsers from "../Admin/Manage-User/ManageUsers";
+import Statistics from "../Admin/Statistics/Statistics";
+import ManageProduct from "../Admin/ManageProduct/ManageProduct";
+import MyProfile from "../User/MyProfile/MyProfile";
+import MyProduct from "../User/MyProduct/MyProduct";
 
 const Route = createBrowserRouter([
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+     
+      {
+        index: true,
+        element: <Statistics></Statistics>,
+      },
+
+      {
+        path: "my-profile",
+        element: <MyProfile></MyProfile>
+      },
+    
+      {
+        path: "my-products",
+        element: <MyProduct />,
+      },
+      {
+        path: "statistics",
+        element: <Statistics/>,
+      },
+      {
+        path: "manage-users",
+        element: <ManageUsers />,
+      },
+      {
+        path:"manage-product",
+        element:<ManageProduct></ManageProduct>
+      }
+    ],
+  },
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
@@ -27,7 +69,7 @@ const Route = createBrowserRouter([
       },
       {
         path: "category",
-        element: <Category></Category>
+        element: <Category></Category>,
       },
       {
         path: "/product/:id",
@@ -38,29 +80,29 @@ const Route = createBrowserRouter([
         ),
       },
       {
-        path:"cart",
-        element:(
+        path: "cart",
+        element: (
           <PrivateRoute>
             <Cart></Cart>
           </PrivateRoute>
-        ) 
+        ),
       },
       {
         path: "orders",
-        element:(
+        element: (
           <PrivateRoute>
             <Order></Order>
           </PrivateRoute>
-        )
+        ),
       },
       {
-        path:"add-product",
-        element:(
+        path: "add-product",
+        element: (
           <PrivateRoute>
             <AddProduct></AddProduct>
           </PrivateRoute>
-        )
-      }
+        ),
+      },
     ],
   },
   {

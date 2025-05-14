@@ -121,7 +121,7 @@ const AddProduct = () => {
             { name: "price", label: "Price", type: "number" },
             { name: "product_type", label: "Product Type" },
             { name: "features", label: "Features (comma separated)" },
-            
+          
           ].map(({ name, label, type = "text" }) => (
             <div key={name} className="col-span-1">
               <label className="block text-sm font-semibold text-gray-600 mb-1">
